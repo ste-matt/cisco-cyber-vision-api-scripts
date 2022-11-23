@@ -5,9 +5,10 @@ Get the IP address of all components
 """
 
 import requests
+import json
 
-center_token = "ics-c2e16cedf9dd3768a17cae961dab25286adaf000-bafb27bc8fc7d49384a718a61ea8c4d94b66bc90"
-center_ip = "10.10.20.53"
+center_token = "ics-becf2ba10ba7058ffb9651d69df46e8131090c22-d96b3d752a2899c4c4a0895076e944df49005ccb"
+center_ip = "172.16.0.140"
 center_port = 443
 center_base_url = "api/3.0"
 
@@ -19,6 +20,7 @@ def get_components_ip():
 
         #raw JSON data response
         raw_json_data = r_get.json()
+        # print(json.dumps(raw_json_data,indent=2))
 
         # get only the label name and IP address of the component
         components_with_ip_and_label = {}
@@ -33,3 +35,5 @@ def get_components_ip():
 all_components = get_components_ip()
 
 print(all_components)
+print(json.dumps(all_components,indent = 3))
+# print(type(all_components))
